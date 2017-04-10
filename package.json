@@ -1,0 +1,13 @@
+{
+  "name": "csrf-demo",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "nodemon ."
+  },
+  "dependencies": {
+    "nodemailer": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
