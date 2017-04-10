@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "firebase-tools": "^3.6.0",
+    "jest": "^19.0.2"
+  },
+  "dependencies": {
+    "firebase-admin": "^4.2.0",
+    "firebase-functions": "^0.5.4"
+  }
+}

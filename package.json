@@ -1,15 +1,9 @@
 {
-  "name": "csrf-demo",
-  "main": "lib/index.js",
   "scripts": {
-    "start": "nodemon . -w . -i node_modules -i .git"
-  },
-  "dependencies": {
-    "express": "^4.15.2",
-    "hbs": "^4.0.1",
-    "nodemailer": "^4.0.0"
+    "deploy": "firebase deploy"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "firebase-tools": "^3.6.0",
+    "lerna": "^2.0.0-rc.1"
   }
 }
