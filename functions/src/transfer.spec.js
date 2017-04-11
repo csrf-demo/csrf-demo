@@ -1,7 +1,7 @@
-const admin = require('firebase-admin')
-const firebase = require('firebase')
-const path = require('path')
-const transfer = require('./transfer')
+import admin from 'firebase-admin'
+import firebase from 'firebase'
+import path from 'path'
+import transfer from './transfer'
 
 test('should transfer money', async function () {
   admin.initializeApp({

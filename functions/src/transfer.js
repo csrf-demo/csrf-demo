@@ -1,6 +1,6 @@
-const admin = require('firebase-admin')
+import admin from 'firebase-admin'
 
-module.exports = async function (req, res) {
+export default async function (req, res) {
   // fetch users from provided info
   const [ sender, receiver ] = await Promise.all([
     // sender
