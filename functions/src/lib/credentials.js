@@ -9,7 +9,7 @@ const credentials = {
 
 for (let name in credentials) {
   credentials[name] = require(
-    resolve(__dirname, '../credentials', credentials[name])
+    resolve(__dirname, '../../credentials', credentials[name])
   )
 }
 

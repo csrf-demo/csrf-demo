@@ -1,5 +1,6 @@
 import admin from 'firebase-admin'
-import credentials from './credentials'
+import credentials from './lib/credentials'
+import generateSpam from './lib/generate-spam'
 import nodemailer from 'nodemailer'
 
 // create a reusable email transporter
@@ -14,17 +15,14 @@ export default async function (event) {
   // set inital balance to zero
   await admin.database().ref(user.uid).set(100)
 
+  // genrate random email
+  const email = generateSpam()
+
   // send spam email
   await transporter.sendMail({
-    from: `Test Sender <${credentials.gmail.user}>`,
+    from: `${email.from} <${credentials.gmail.user}>`,
     to: user.email,
-    subject: 'Hello from Firebase',
-    html: `
-      <html>
-        <body>
-          Hello, world.
-        </body>
-      </html>
-    `
+    subject: email.subject,
+    html: email.template
   })
 }

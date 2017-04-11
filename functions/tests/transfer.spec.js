@@ -1,7 +1,7 @@
 import admin from 'firebase-admin'
-import credentials from './credentials'
+import credentials from '../src/lib/credentials'
 import firebase from 'firebase'
-import transfer from './transfer'
+import transfer from '../src/transfer'
 
 test('should transfer money', async function () {
   admin.initializeApp({
