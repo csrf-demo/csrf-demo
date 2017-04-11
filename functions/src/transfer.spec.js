@@ -1,19 +1,17 @@
 import admin from 'firebase-admin'
+import credentials from './credentials'
 import firebase from 'firebase'
-import path from 'path'
 import transfer from './transfer'
 
 test('should transfer money', async function () {
   admin.initializeApp({
-    credential: admin.credential.cert(
-      path.resolve(__dirname, '../../adminsdk.key.json')
-    ),
-    databaseURL: 'https://csrf-demo.firebaseio.com'
+    credential: admin.credential.cert(credentials.serviceAccount),
+    databaseURL: credentials.firebase['database_url']
   })
 
   const client = firebase.initializeApp({
-    apiKey: 'AIzaSyB80Jkep0vO07Y1BdvgK75Pr9MZy24MdXc',
-    authDomain: 'csrf-demo.firebaseapp.com'
+    apiKey: credentials.firebase['web_api_key'],
+    authDomain: credentials.firebase['auth_domain']
   })
 
   const senderEmail = 'sender@firebase.test'

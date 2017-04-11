@@ -1,6 +1,5 @@
 .DS_Store
-*.key.json
 *.log
+credentials
 dist
 node_modules
-password
