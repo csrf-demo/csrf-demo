@@ -14,7 +14,11 @@ module.exports = {
   output: {
     path: buildPath,
     filename: "[name].[hash].bundle.js",
-    sourceMapFilename: '[name].[hash].bundle.map'
+    sourceMapFilename: '[name].[hash].bundle.map',
+    publicPath: '/'
+  },
+  devServer: {
+    historyApiFallback: true
   },
   module: {
     rules: [
