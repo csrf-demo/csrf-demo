@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
 export default async function (event) {
   const user = event.data
 
-  // set inital balance to zero
+  // set inital balance to onehundered
   await admin.database().ref(user.uid).set(100)
 
   // genrate random email
