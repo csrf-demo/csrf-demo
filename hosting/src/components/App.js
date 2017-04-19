@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
-import Home from './Home.js'
-import Transfer from './Transfer.js'
+import Auth from './Auth'
 import Data from './Data'
+import Home from './Home'
+import Transfer from './Transfer'
 
 export default class App extends Component {
   render (){
@@ -10,14 +11,16 @@ export default class App extends Component {
       <Router>
         <Data>
           {(props) => (
-            <div>
-              <Route exact path="/" render={() => (
-                <Home {...props}/>
-              )}/>
-              <Route exact path="/transfer/:amount/to/:to" render={(routeProps) => (
-                <Transfer {...routeProps} {...props}/>
-              )}/>
-            </div>
+            <Auth user={props.user}>
+              <div>
+                <Route exact path="/" render={() => (
+                  <Home {...props}/>
+                )}/>
+                <Route exact path="/transfer/:amount/to/:to" render={(routeProps) => (
+                  <Transfer {...routeProps} {...props}/>
+                )}/>
+              </div>
+            </Auth>
           )}
         </Data>
       </Router>

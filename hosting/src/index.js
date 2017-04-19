@@ -10,11 +10,6 @@ firebase.initializeApp({
   databaseURL: 'https://csrf-demo.firebaseio.com'
 });
 
-// TMP: replace with google sign in
-firebase.auth().signInWithEmailAndPassword('sender@firebase.test', 'password').catch(function(error) {
-  console.log(error)
-});
-
 ReactDOM.render(
   <App/>,
   document.getElementById('app')
