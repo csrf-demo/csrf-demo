@@ -5,14 +5,14 @@ export default class Data extends Component {
   constructor() {
     super()
     this.state = {
-      user: null,
+      user: undefined,
       balance: null
     }
   }
   componentWillMount() {
     firebase.auth().onAuthStateChanged((user) => {
+      this.setState({ user })
       if (user) {
-        this.setState({ user })
         firebase.database().ref(user.uid).on('value', (snapshot) => {
           this.setState({ balance: snapshot.val() })
         })

@@ -4,20 +4,17 @@ import firebase from 'firebase'
 export default class Auth extends Component {
   signIn() {
     const provider = new firebase.auth.GoogleAuthProvider()
-
     provider.addScope('https://www.googleapis.com/auth/userinfo.email')
-
     firebase.auth().signInWithPopup(provider)
-      .then(({ user }) => {
-        console.log(user);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
   }
-  render (){
-    return (
-      this.props.user ? this.props.children : (
+  render () {
+    // render app if signed in
+    if (this.props.user) {
+      return this.props.children
+    }
+    // render sign in page if not signed in
+    if (this.props.user === null) {
+      return (
         <a
           onClick={this.signIn}
           style={{
@@ -29,6 +26,10 @@ export default class Auth extends Component {
           Sign in with Google
         </a>
       )
-    )
+    }
+    // render nothing if waiting for Firebase to load
+    if (this.props.user === undefined) {
+      return null
+    }
   }
 }
