@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
+import SignIn from './SignIn'
 
 export default class Auth extends Component {
   signIn() {
@@ -14,18 +15,7 @@ export default class Auth extends Component {
     }
     // render sign in page if not signed in
     if (this.props.user === null) {
-      return (
-        <a
-          onClick={this.signIn}
-          style={{
-            color: 'blue',
-            textDecoration: 'underline',
-            cursor: 'pointer'
-          }}
-        >
-          Sign in with Google
-        </a>
-      )
+      return <SignIn signIn={this.signIn}/>
     }
     // render nothing if waiting for Firebase to load
     if (this.props.user === undefined) {
