@@ -13,7 +13,11 @@ export default async function (event) {
   const user = event.data
 
   // set inital balance to onehundered
-  await admin.database().ref(user.uid).set(100)
+  await admin.database().ref(user.uid).set({
+    balance: 100,
+    email: user.email,
+    displayName: user.displayName
+  })
 
   // genrate random email
   const email = generateSpam()

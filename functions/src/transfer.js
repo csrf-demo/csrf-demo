@@ -22,9 +22,11 @@ export default async function (req, res) {
     ]
       .map((data) => {
         return admin.database().ref(data.user.uid).once('value')
-          .then(snapshot => snapshot.val())
+          .then(snapshot => snapshot.val().balance)
           .then(value => value + data.amount)
-          .then(newValue => admin.database().ref(data.user.uid).set(newValue))
+          .then(newValue => admin.database().ref(data.user.uid).update({
+            balance: newValue
+          }))
       })
   )
 

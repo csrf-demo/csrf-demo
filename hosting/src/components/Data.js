@@ -14,7 +14,10 @@ export default class Data extends Component {
       this.setState({ user })
       if (user) {
         firebase.database().ref(user.uid).on('value', (snapshot) => {
-          this.setState({ balance: snapshot.val() })
+          const value = snapshot.val()
+          if (value) {
+            this.setState({ balance: value.balance })
+          }
         })
       }
     })

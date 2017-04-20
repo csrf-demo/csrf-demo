@@ -23,8 +23,8 @@ test('should transfer money', async function () {
   const receiver = await admin.auth().getUserByEmail(receiverEmail)
 
   // create entrty
-  admin.database().ref(sender.uid).set(100)
-  admin.database().ref(receiver.uid).set(100)
+  admin.database().ref(sender.uid).update({ balance: 100 })
+  admin.database().ref(receiver.uid).update({ balance: 100 })
 
   // make transfer
   await transfer(
@@ -37,6 +37,6 @@ test('should transfer money', async function () {
   const receiverSnapshot = await admin.database().ref(receiver.uid).once('value')
 
   // verify balances of both parties
-  expect(senderSnapshot.val()).toBe(75)
-  expect(receiverSnapshot.val()).toBe(125)
+  expect(senderSnapshot.val().balance).toBe(75)
+  expect(receiverSnapshot.val().balance).toBe(125)
 })
