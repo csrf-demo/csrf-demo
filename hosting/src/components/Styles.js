@@ -11,10 +11,13 @@ injectGlobal`
 `
 
 const theme = {
-  background: '#444444',
-  title: '#D8D8D8',
-  subtitle: '#787878',
-  text: '#A3A3A3'
+  colors: {
+    background: '#444444',
+    title: '#D8D8D8',
+    subtitle: '#787878',
+    text: '#A3A3A3'
+  },
+  mobile: 'max-width: 26em'
 }
 
 const Styles = (props) => (
