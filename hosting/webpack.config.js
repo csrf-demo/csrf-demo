@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const srcPath = path.join(__dirname, '/src')
@@ -39,6 +40,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new CopyWebpackPlugin([
+      { from: 'public' }
+    ]),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendors',
       fileName: 'vendors.[hash].js',
