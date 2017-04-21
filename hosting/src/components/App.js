@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import Auth from './Auth'
 import Data from './Data'
-import Dashboard from './Dashbaord'
+import Dashboard from './Dashboard'
 import Home from './Home'
 import Transfer from './Transfer'
 
