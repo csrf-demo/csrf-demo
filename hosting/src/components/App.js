@@ -5,26 +5,29 @@ import Data from './Data'
 import Dashboard from './Dashboard'
 import Home from './Home'
 import Transfer from './Transfer'
+import Styles from './Styles'
 
 export default class App extends Component {
   render (){
     return (
       <Router>
-        <Data>
-          {(props) => (
-            <Auth user={props.user}>
-              <div>
-                <Route exact path="/" render={() => (
-                  <Home {...props}/>
-                )}/>
-                <Route exact path="/transfer/:amount/to/:to" render={(routeProps) => (
-                  <Transfer {...routeProps} {...props}/>
-                )}/>
-                <Route exact path="/dashboard" component={Dashboard}/>
-              </div>
-            </Auth>
-          )}
-        </Data>
+        <Styles>
+          <Data>
+            {(props) => (
+              <Auth user={props.user}>
+                <div>
+                  <Route exact path="/" render={() => (
+                    <Home {...props}/>
+                  )}/>
+                  <Route exact path="/transfer/:amount/to/:to" render={(routeProps) => (
+                    <Transfer {...routeProps} {...props}/>
+                  )}/>
+                  <Route exact path="/dashboard" component={Dashboard}/>
+                </div>
+              </Auth>
+            )}
+          </Data>
+        </Styles>
       </Router>
     )
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const Title = styled.h1`
-  color: orange;
+  color: ${props => props.theme.background};
 `
 
 export default class Home extends Component {
