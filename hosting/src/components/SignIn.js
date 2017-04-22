@@ -10,7 +10,7 @@ const Title = styled.h1`
   color: ${props => props.theme.colors.title};
   font-size: 7vh;
   text-shadow: 0 2px 5px rgba(0,0,0,0.75);
-  top: 67vh;
+  top: 75%;
 
   @media (${mobile}) {
     display: none;
@@ -24,7 +24,7 @@ const Subtitle = styled.h2`
   font-size: 5vh;
   text-shadow: 0 2px 5px rgba(0,0,0,0.75);
   font-weight: normal;
-  top: 75vh;
+  top: calc(75% + 8.5vh);
 
   @media (${mobile}) {
     display: none;
@@ -36,6 +36,7 @@ const Main = styled.main`
   background-position: top center;
   background-size: cover;
   height: 90vh;
+  min-height: 29em;
   position: relative;
 
   @media (${mobile}) {
