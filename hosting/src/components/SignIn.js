@@ -115,7 +115,10 @@ export default class SignIn extends Component {
               <CardTitle>CSRF Bank</CardTitle>
               <CardSubtitle>Register</CardSubtitle>
               <GoogleButton onClick={this.props.signIn}/>
-              <CardText>By registering you understand this is a demonstration.</CardText>
+              <CardText>
+                By registering you agree to participate in a Cross-Site Request
+                Forgery demo.
+              </CardText>
             </Card>
           </CardWrapper>
           <br/>
