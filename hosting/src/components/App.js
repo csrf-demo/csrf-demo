@@ -18,6 +18,7 @@ export default class App extends Component {
               <div>
                 <LanguageBar>English</LanguageBar>
                 <Auth user={props.user}>
+                  <div>
                     <Route exact path="/" render={() => (
                       <Home {...props}/>
                     )}/>
@@ -25,6 +26,7 @@ export default class App extends Component {
                       <Transfer {...routeProps} {...props}/>
                     )}/>
                     <Route exact path="/dashboard" component={Dashboard}/>
+                  </div>
                 </Auth>
               </div>
             )}
