@@ -7,7 +7,6 @@ const srcPath = path.join(__dirname, '/src')
 const buildPath = path.join(__dirname, '/dist')
 
 module.exports = {
-  devtool: 'source-map',
   entry: {
     app: path.join(srcPath, 'index.js'),
     vendors: [ 'react', 'react-dom']
