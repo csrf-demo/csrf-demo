@@ -63,27 +63,23 @@ const FormWrapper = styled.form`
 
 const GeneralInput = styled.input`
   display: inline-block;
+  color: ${props => props.theme.colors.background};
   margin: auto;
   border: none;
   background: none;
-  border-bottom: 0.1em black solid;
+  border-bottom: 0.1em ${props => props.theme.colors.background} solid;
   outline: 0;
   text-align: center;
   font-size: 1.5em;
   line-height: 1.75em;
+  width: 10em;
 `
 
-const AmountInput = styled(GeneralInput)`
-  width: 4em;
-`
-
-const EmailInput = styled(GeneralInput)`
-  width: 12em;
-`
 
 const Divider = styled(Subtitle)`
   font-size: 1.25em;
   margin: 0.5em 0;
+  margin-top: 1em;
 `
 
 const Button = styled.button`
@@ -165,12 +161,16 @@ class Home extends Component {
                 </Balance>
                 <Subtitle>Make a Transfer</Subtitle>
                 <FormWrapper onSubmit={this.submit}>
-                  <AmountInput
+                  <GeneralInput
+                    type="tel"
+                    novalidate
                     value={this.state.amount}
                     onChange={this.updateAmount}
                   />
                   <Divider>to</Divider>
-                  <EmailInput
+                  <GeneralInput
+                    type="email"
+                    novalidate
                     placeholder="Email Address"
                     value={this.state.to}
                     onChange={this.updateEmail}

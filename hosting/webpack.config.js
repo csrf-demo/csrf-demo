@@ -18,7 +18,13 @@ module.exports = {
     publicPath: '/'
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/transfer/*': {
+        target: 'http://localhost:8080/',
+        pathRewrite: { '.*' : '' }
+      }
+    }
   },
   module: {
     rules: [
@@ -35,7 +41,7 @@ module.exports = {
             }
           }
         ]
-      },
+      }
     ]
   },
   plugins: [
