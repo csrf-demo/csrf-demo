@@ -35,7 +35,7 @@ const Main = styled.main`
   background-image: url(/img/landing.png);
   background-position: top center;
   background-size: cover;
-  height: 87vh;
+  height: 100%;
   min-height: 29em;
   position: relative;
 
