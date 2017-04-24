@@ -8,6 +8,10 @@ injectGlobal`
     box-sizing: border-box;
     font-family: 'Source Sans Pro';
   }
+
+  #app{
+    height: 100vh;
+  }
 `
 
 const theme = {
@@ -15,7 +19,8 @@ const theme = {
     background: '#444444',
     title: '#D8D8D8',
     subtitle: '#787878',
-    text: '#A3A3A3'
+    text: '#A3A3A3',
+    barText: 'white'
   },
   mobile: 'max-width: 25em'
 }

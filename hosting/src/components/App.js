@@ -5,6 +5,7 @@ import Dashboard from './Dashboard'
 import Data from './Data'
 import Home from './Home'
 import LanguageBar from './shared/LanguageBar'
+import Footer from './shared/Footer'
 import Styles from './Styles'
 import Transfer from './Transfer'
 
@@ -28,6 +29,7 @@ export default class App extends Component {
                     <Route exact path="/dashboard" component={Dashboard}/>
                   </div>
                 </Auth>
+                <Footer/>
               </div>
             )}
           </Data>
