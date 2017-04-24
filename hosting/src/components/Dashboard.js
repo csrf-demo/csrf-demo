@@ -3,14 +3,6 @@ import styled, { ThemeProvider } from 'styled-components'
 import Center from './Shared/Center.js'
 import firebase from 'firebase'
 
-const Wrapper = styled.section`
-  background: ${props => props.theme.colors.background};
-  min-height: 100vh;
-  height: 100%;
-  width: 100%;
-  min-width: 100vw;
-`
-
 const Title = styled.h1`
   display: flex;
   justify-content: center;
@@ -31,6 +23,8 @@ const Users = styled.div`
 
   @media(${props => props.theme.mobile}){
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 `
 
@@ -63,23 +57,21 @@ class Dashboard extends Component {
   }
   render (){
     return (
-      <Wrapper>
-        <Center>
-          <Title>
-            Overview
-          </Title>
-          <Users>
-            {this.state.accounts.map((account) => (
-              <User>
-                <div key={account.email}>
-                  <SubTitle>User: {account.displayName}</SubTitle>
-                  <SubTitle>Balance: {account.balance}</SubTitle>
-                </div>
-              </User>
-            ))}
-          </Users>
-        </Center>
-      </Wrapper>
+      <Center>
+        <Title>
+          Overview
+        </Title>
+        <Users>
+          {this.state.accounts.map((account) => (
+            <User>
+              <div key={account.email}>
+                <SubTitle>User: {account.displayName}</SubTitle>
+                <SubTitle>Balance: {account.balance}</SubTitle>
+              </div>
+            </User>
+          ))}
+        </Users>
+      </Center>
     )
   }
 }
