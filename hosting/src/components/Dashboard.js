@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import Center from './Shared/Center.js'
+import Center from './shared/Center.js'
 import firebase from 'firebase'
 
 const Title = styled.h1`
@@ -63,8 +63,8 @@ class Dashboard extends Component {
         </Title>
         <Users>
           {this.state.accounts.map((account) => (
-            <User>
-              <div key={account.email}>
+            <User key={account.email}>
+              <div>
                 <SubTitle>User: {account.displayName}</SubTitle>
                 <SubTitle>Balance: {account.balance}</SubTitle>
               </div>
