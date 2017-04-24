@@ -32,7 +32,7 @@ export default class Footer extends Component {
             Fork on Github
           </Link>
           <br/>
-          Nick Breaton &#183; Jeremy Bohannon &#183; Hunter Aeraer
+          Nick Breaton &#183; Jeremy Bohannon &#183; Hunter Heavener
         </Content>
       </FooterWrapper>
     )
