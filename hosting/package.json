@@ -26,6 +26,7 @@
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
+    "axios": "^0.16.1",
     "currency-formatter": "^1.2.1",
     "firebase": "^3.7.8",
     "is-email": "^1.0.0",

@@ -28,7 +28,7 @@ test('should transfer money', async function () {
 
   // make transfer
   await transfer(
-    { params: { token: await sender.getToken(), to: receiverEmail, amount } },
+    { query: { token: await sender.getToken(), to: receiverEmail, amount } },
     { send: () => undefined }
   )
 
