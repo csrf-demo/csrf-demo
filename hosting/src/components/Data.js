@@ -6,7 +6,7 @@ export default class Data extends Component {
     super()
     this.state = {
       user: undefined,
-      balance: null
+      balance: undefined
     }
   }
   componentWillMount() {
@@ -15,9 +15,7 @@ export default class Data extends Component {
       if (user) {
         firebase.database().ref(user.uid).on('value', (snapshot) => {
           const value = snapshot.val()
-          if (value) {
-            this.setState({ balance: value.balance })
-          }
+          this.setState({ balance: value ? value.balance : null })
         })
       }
     })

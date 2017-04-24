@@ -1,12 +1,12 @@
 const webpack = require('webpack')
 const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const srcPath = path.join(__dirname, '/src')
 const buildPath = path.join(__dirname, '/dist')
 
 module.exports = {
-  devtool: 'source-map',
   entry: {
     app: path.join(srcPath, 'index.js'),
     vendors: [ 'react', 'react-dom']
@@ -18,7 +18,13 @@ module.exports = {
     publicPath: '/'
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/transfer/*': {
+        target: 'http://localhost:8080/',
+        pathRewrite: { '.*' : '' }
+      }
+    }
   },
   module: {
     rules: [
@@ -35,10 +41,13 @@ module.exports = {
             }
           }
         ]
-      },
+      }
     ]
   },
   plugins: [
+    new CopyWebpackPlugin([
+      { from: 'public' }
+    ]),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendors',
       fileName: 'vendors.[hash].js',
