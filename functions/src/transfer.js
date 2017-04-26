@@ -6,7 +6,7 @@ export default async function (req, res) {
   await new Promise((resolve) => {
     cors({ origin: true })(req, res, resolve)
   })
-  
+
   // fetch users from provided info
   const [ sender, receiver ] = await Promise.all([
     // sender
@@ -17,8 +17,20 @@ export default async function (req, res) {
     admin.auth().getUserByEmail(req.query.to)
   ])
 
+  // throw error if sender is same as receiver
+  if (sender.uid === receiver.uid) {
+    res.sendStatus(400)
+    return
+  }
+
   // fetch amount of money from request
   const amount = req.query.amount || 0
+
+  // ensure amount is not less than 0
+  if (amount <= 0) {
+    res.sendStatus(400)
+    return
+  }
 
   // move money from sender account to receiver account
   await Promise.all(
