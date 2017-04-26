@@ -1,5 +1,5 @@
 import { format } from 'currency-formatter'
-import { Subtitle, Balance } from './Home'
+import { Subtitle, Balance, Spinner } from './Home'
 import React, { Component } from 'react'
 import Center from './shared/Center'
 import axios from 'axios'
@@ -51,9 +51,15 @@ export default class Transfer extends Component {
     return (
       <Center>
         {this.state.error && (
-          <MainTitle>
-            Error: nothing transfered
-          </MainTitle>
+          <div>
+            <div>
+              <Subtitle>Error<br/>Nothing Transfered</Subtitle>
+            </div>
+            <div>
+              <Subtitle>Current Balance</Subtitle>
+              <Balance>${this.props.balance}</Balance>
+            </div>
+          </div>
         )}
         {this.state.error === null && (
           <div>
@@ -66,6 +72,11 @@ export default class Transfer extends Component {
               <Subtitle>New Balance</Subtitle>
               <Balance>${this.props.balance}</Balance>
             </div>
+          </div>
+        )}
+        {this.state.error === undefined && (
+          <div>
+            <Spinner style={{ marginTop: '10em' }}/>
           </div>
         )}
       </Center>

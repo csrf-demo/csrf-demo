@@ -32,7 +32,7 @@ const spin = keyframes`
   }
 `
 
-const Spinner = styled.div`
+export const Spinner = styled.div`
   text-align: center;
   &::after {
     content: '';
