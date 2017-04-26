@@ -5,7 +5,7 @@ import Center from './shared/Center'
 import { Link, withRouter } from 'react-router-dom'
 import isEmail from 'is-email'
 
-const Subtitle = styled.div`
+export const Subtitle = styled.div`
   display: inline-block;
   color: ${props => props.theme.colors.subtitle};
   font-size: 1.75em;
@@ -46,7 +46,7 @@ const Spinner = styled.div`
   }
 `
 
-const Balance = styled.div`
+export const Balance = styled.div`
   text-align: center;
   color: ${props => props.theme.colors.subtitle};
   font-size: 4em;
