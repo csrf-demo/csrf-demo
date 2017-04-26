@@ -3,7 +3,7 @@ import fs from 'fs'
 import juice from 'juice'
 
 const emails = [
-  { from: 'Package Tracker', subject: 'Track your Package', template: 'package.html' },
+  { from: 'Amazon Order', subject: 'Your package is on the way!', template: 'amazon.html' },
 ]
 
 export default function () {
