@@ -1,10 +1,12 @@
 import { format } from 'currency-formatter'
-import { Subtitle, Balance, Spinner } from './Home'
 import React, { Component } from 'react'
 import Center from './shared/Center'
 import axios from 'axios'
 import styled from 'styled-components'
 import firebase from 'firebase'
+import Balance from './shared/Balance'
+import Spinner from './shared/Spinner'
+import Subtitle from './shared/Subtitle'
 
 const MainTitle = styled.div`
   font-size: 2em;
