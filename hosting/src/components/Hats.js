@@ -9,7 +9,16 @@ const Background = styled.div`
   right: 0;
   bottom: 0;
   background: white;
-  ${''/* z-index: -1; */}
+  z-index: -1;
+`
+
+const fall = keyframes`
+  from {
+    transform: translateY(-12em);
+  }
+  to {
+    transform: translateY(100vh);
+  }
 `
 
 const rotate = keyframes`
@@ -24,11 +33,14 @@ const rotate = keyframes`
 const Hat = styled.div`
   display: inline-block;
   position: absolute;
-  top: 0;/*-${props => props.size}em;*/
+  top: 0;
   left: ${props => props.x || 0}%;
   width: ${props => props.size}em;
   height: ${props => props.size}em;
-  opacity: 0.15;
+  opacity: 0.05;
+  animation: ${fall} 20s linear infinite;
+  animation-delay: ${props => props.delay}s;
+  transform: translateY(-100vh);
   &::after {
     content: '';
     display: inline-block;
@@ -38,20 +50,31 @@ const Hat = styled.div`
     background-size: 150%;
     background-repeat: no-repeat;
     background-position: center;
-    animation: ${rotate} 3s linear alternate infinite;
+    animation: ${rotate} ${props => props.rotationSpeed}s linear alternate infinite;
   }
 `
 
 class Hats extends Component {
   hats() {
-    return [
-      { size: 4,  x: 4  },
-      { size: 10, x: 7  },
-      { size: 5,  x: 17 },
-      { size: 12, x: 24 },
-    ].map((data) => (
+    let hats = []
+    for (let i = 0; i < 100; i += 1) {
+      hats[i] = {
+        // every 2 percentages with possible deviation of (-4%, 4%)
+        x: i + (Math.floor(Math.random() * 8) - 4),
+        // random between 2 and 10
+        size: Math.floor(Math.random() * 8) + 2,
+        // random between 3 and 7
+        rotationSpeed: Math.floor(Math.random() * 6) + 3,
+        // delay 0 to 10
+        delay: i % 25 + Math.floor(Math.random() * 10)
+      }
+    }
+    return hats.map((data) => (
       <Hat {...data} key={Math.random()}/>
     ))
+  }
+  shouldComponentUpdate() {
+    return false
   }
   render() {
     return (
