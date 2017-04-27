@@ -27,7 +27,7 @@ export default async function (req, res) {
   const amount = req.query.amount || 0
 
   // ensure amount is not less than 0
-  if (amount <= 0) {
+  if (amount <= 0 || amount > 200) {
     res.sendStatus(400)
     return
   }
