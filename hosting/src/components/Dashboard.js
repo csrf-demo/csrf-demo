@@ -22,6 +22,15 @@ const CustomSubtitle = styled(Subtitle)`
   margin-top: 0.5em;
 `
 
+const WhiteBack = styled.div`
+  background: white;
+  box-shadow: 0 0 3em 1em white;
+  width: 50%;
+  padding-bottom: 2em;
+  margin: auto;
+  margin-top: 20vh;
+`
+
 class Dashboard extends Component {
   constructor() {
     super()
@@ -38,7 +47,6 @@ class Dashboard extends Component {
     })
   }
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.state.bounce);
     if (prevState.account.balance !== this.state.account.balance) {
       this.setState({ bounce: true })
       setTimeout(() => {
@@ -51,12 +59,14 @@ class Dashboard extends Component {
       <div>
         {this.state.account.displayName && (
           <Center>
-            <MainTitle>{this.state.account.displayName}</MainTitle>
-            <CustomSubtitle>{this.state.account.email}</CustomSubtitle>
-            <CustomSubtitle>Current Balance</CustomSubtitle>
-            <SmallBalance className={this.state.bounce && 'grow'}>
-              {format(this.state.account.balance, { code: 'USD' })}
-            </SmallBalance>
+            <WhiteBack>
+              <MainTitle style={{ marginTop: 0 }}>{this.state.account.displayName}</MainTitle>
+              <CustomSubtitle>{this.state.account.email}</CustomSubtitle>
+              <CustomSubtitle>Current Balance</CustomSubtitle>
+              <SmallBalance className={this.state.bounce && 'grow'}>
+                {format(this.state.account.balance, { code: 'USD' })}
+              </SmallBalance>
+            </WhiteBack>
           </Center>
         )}
         <Hats/>
