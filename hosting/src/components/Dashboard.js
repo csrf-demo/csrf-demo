@@ -11,6 +11,11 @@ import Hats from './Hats'
 const SmallBalance = styled(Balance)`
   margin-top: -1.5em;
   font-size: 3em;
+  transition: transform 500ms;
+
+  &.grow {
+    transform: scale(1.1);
+  }
 `
 
 const CustomSubtitle = styled(Subtitle)`
@@ -21,7 +26,8 @@ class Dashboard extends Component {
   constructor() {
     super()
     this.state = {
-      account: {}
+      account: {},
+      bounce: false
     }
   }
   componentWillMount() {
@@ -31,6 +37,15 @@ class Dashboard extends Component {
       this.setState({ account: evilAccount })
     })
   }
+  componentDidUpdate(prevProps, prevState) {
+    console.log(this.state.bounce);
+    if (prevState.account.balance !== this.state.account.balance) {
+      this.setState({ bounce: true })
+      setTimeout(() => {
+        this.setState({ bounce: false })
+      }, 500)
+    }
+  }
   render (){
     return (
       <div>
@@ -39,7 +54,7 @@ class Dashboard extends Component {
             <MainTitle>{this.state.account.displayName}</MainTitle>
             <CustomSubtitle>{this.state.account.email}</CustomSubtitle>
             <CustomSubtitle>Current Balance</CustomSubtitle>
-            <SmallBalance>
+            <SmallBalance className={this.state.bounce && 'grow'}>
               {format(this.state.account.balance, { code: 'USD' })}
             </SmallBalance>
           </Center>
