@@ -57,7 +57,7 @@ const Hat = styled.div`
 class Hats extends Component {
   hats() {
     let hats = []
-    for (let i = 0; i < 100; i += 1) {
+    for (let i = 0; i < 100; i += 2) {
       hats[i] = {
         // every 2 percentages with possible deviation of (-4%, 4%)
         x: i + (Math.floor(Math.random() * 8) - 4),
