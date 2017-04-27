@@ -11,7 +11,7 @@ import Subtitle from './shared/Subtitle'
 const MainTitle = styled.div`
   font-size: 2em;
   text-align: center;
-  margin-top: 3em;
+  padding-top: 3em;
 `
 
 export default class Transfer extends Component {
@@ -78,7 +78,7 @@ export default class Transfer extends Component {
         )}
         {this.state.error === undefined && (
           <div>
-            <Spinner style={{ marginTop: '10em' }}/>
+            <Spinner style={{ paddingTop: '10em' }}/>
           </div>
         )}
       </Center>
