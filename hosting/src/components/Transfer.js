@@ -7,12 +7,7 @@ import firebase from 'firebase'
 import Balance from './shared/Balance'
 import Spinner from './shared/Spinner'
 import Subtitle from './shared/Subtitle'
-
-const MainTitle = styled.div`
-  font-size: 2em;
-  text-align: center;
-  padding-top: 3em;
-`
+import MainTitle from './shared/MainTitle'
 
 export default class Transfer extends Component {
   constructor() {

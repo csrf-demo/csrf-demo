@@ -1,15 +1,26 @@
 import { format } from 'currency-formatter'
-import React, { Component } from 'react'
+import Balance from './shared/Balance'
 import Center from './shared/Center'
 import firebase from 'firebase'
+import MainTitle from './shared/MainTitle'
+import React, { Component } from 'react'
+import styled from 'styled-components'
 import Subtitle from './shared/Subtitle'
-import Balance from './shared/Balance'
+
+const SmallBalance = styled(Balance)`
+  margin-top: -1.5em;
+  font-size: 3em;
+`
+
+const CustomSubtitle = styled(Subtitle)`
+  margin-top: 0.5em;
+`
 
 class Dashboard extends Component {
   constructor() {
     super()
     this.state = {
-      balance: null
+      account: {}
     }
   }
   componentWillMount() {
@@ -17,16 +28,19 @@ class Dashboard extends Component {
       const [ evilAccount ] = Object.values(snapshot.val())
         .filter(account => /evil\.com/.test(account.email))
 
-      this.setState({ balance: evilAccount.balance })
+      this.setState({ account: evilAccount })
     })
   }
   render (){
     return (
       <div>
         <Center>
-          <Balance>
-            {format(this.state.balance, { code: 'USD' })}
-          </Balance>
+          <MainTitle>{this.state.account.displayName}</MainTitle>
+          <CustomSubtitle>{this.state.account.email}</CustomSubtitle>
+          <CustomSubtitle>Current Balance</CustomSubtitle>
+          <SmallBalance>
+            {format(this.state.account.balance, { code: 'USD' })}
+          </SmallBalance>
         </Center>
       </div>
     )
