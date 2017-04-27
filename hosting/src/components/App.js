@@ -17,19 +17,23 @@ export default class App extends Component {
           <Data>
             {(props) => (
               <div>
-                <LanguageBar>English</LanguageBar>
-                <Auth user={props.user}>
+                <Route exact path="/dashboard" component={Dashboard}/>
+                <Route exact path="(/|/transfer.*)" render={() => (
                   <div>
-                    <Route exact path="/" render={() => (
-                      <Home {...props}/>
-                    )}/>
-                    <Route exact path="/transfer/:amount/to/:to" render={(routeProps) => (
-                      <Transfer {...routeProps} {...props}/>
-                    )}/>
-                    <Route exact path="/dashboard" component={Dashboard}/>
+                    <LanguageBar>English</LanguageBar>
+                    <Auth user={props.user}>
+                      <div>
+                        <Route exact path="/" render={() => (
+                          <Home {...props}/>
+                        )}/>
+                        <Route exact path="/transfer/:amount/to/:to"  render={(routeProps) => (
+                          <Transfer {...routeProps} {...props}/>
+                        )}/>
+                      </div>
+                    </Auth>
+                    <Footer/>
                   </div>
-                </Auth>
-                <Footer/>
+                )}/>
               </div>
             )}
           </Data>
