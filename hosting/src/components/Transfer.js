@@ -61,7 +61,7 @@ export default class Transfer extends Component {
         {this.state.error === null && (
           <div>
             <MainTitle>
-              Transferd {
+              Transferred {
                 format(this.state.amount, { code: 'USD', decimal: '', precision: 0 })
               } to {this.state.name}
             </MainTitle>
