@@ -2,6 +2,11 @@
 
 A Cross-Site Request Forgery demo application built for ITCS 3200.
 
+## :exclamation: Discalaimer
+
+__This application was built under an enourmous time constraint during finals week.__
+
+__It does not represent our ability to properly structure a web application.__
 
 ## Credentials
 
