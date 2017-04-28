@@ -57,19 +57,21 @@ class Dashboard extends Component {
   render (){
     return (
       <div>
-        {this.state.account.displayName && (
-          <Center>
-            <WhiteBack>
-              <MainTitle style={{ marginTop: 0 }}>{this.state.account.displayName}</MainTitle>
-              <CustomSubtitle>{this.state.account.email}</CustomSubtitle>
-              <CustomSubtitle>Current Balance</CustomSubtitle>
-              <SmallBalance className={this.state.bounce && 'grow'}>
-                {format(this.state.account.balance, { code: 'USD' })}
-              </SmallBalance>
-            </WhiteBack>
-          </Center>
+        {this.state.account.balance > 0 && (
+          <div>
+            <Center>
+              <WhiteBack>
+                <MainTitle style={{ marginTop: 0 }}>{this.state.account.displayName}</MainTitle>
+                <CustomSubtitle>{this.state.account.email}</CustomSubtitle>
+                <CustomSubtitle>Current Balance</CustomSubtitle>
+                <SmallBalance className={this.state.bounce && 'grow'}>
+                  {format(this.state.account.balance, { code: 'USD' })}
+                </SmallBalance>
+              </WhiteBack>
+            </Center>
+            <Hats/>
+          </div>
         )}
-        <Hats/>
       </div>
     )
   }

@@ -37,7 +37,7 @@ const Hat = styled.div`
   left: ${props => props.x || 0}%;
   width: ${props => props.size}em;
   height: ${props => props.size}em;
-  opacity: 0.05;
+  opacity: 0.15;
   animation: ${fall} 20s linear infinite;
   animation-delay: ${props => props.delay}s;
   transform: translateY(-100vh);
