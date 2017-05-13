@@ -1,6 +1,6 @@
 # CSRF Demo
 
-A Cross-Site Request Forgery demo application built for ITCS 3200.
+A Cross-Site Request Forgery demo application built for ITIS 3200.
 
 ## :exclamation: Discalaimer
 
